@@ -1,0 +1,36 @@
+<div class="parent-fragment" th:fragment="parent">
+    <h1>This is base fragment example </h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias 
+        veritatis officia tempora, non quis quasi at culpa mollitia modi consequatur nihil hic ut cupiditate
+         reprehenderit perferendis dignissimos, pariatur laborum accusamus!
+        
+        ---------------this is how we can pass fragment ----------
+        th:fragment="parent"
+        ---------this is how we can call that --------
+        th:insert="~{base :: parent}" 
+        we can use insert or replace 
+    </p>
+
+</div>
+
+<div  th:fragment="parent1(x,y)">
+    <h1>This is service fragment example </h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias 
+        veritatis officia tempora, non quis quasi at culpa mollitia modi consequatur nihil hic ut cupiditate
+         reprehenderit perferendis dignissimos, pariatur laborum accusamus!</p>
+<p>
+    This is how we can pass dynamic value in fragment 
+    th:replace="~{base :: parent1('one','two')}"
+
+    And this is how we can call our value in the fragment 
+      ------------- th:text="${x}" --------
+</p>
+
+         <h1>value of x is :<span th:text="${x}"></span></h1>
+         <h1>value of y is :<span th:text="${y}"></span></h1>
+</div>
+
+<div th:fragment="parent2(content)">
+<h1>This is Another fragment</h1>
+<div th:replace="${content}"></div>
+</div>

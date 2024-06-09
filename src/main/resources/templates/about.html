@@ -7,6 +7,50 @@
 </head>
 <body>
     <h1>This is About Page</h1>
-    
+    <p>Example of fragement in Thymeleaf first insert and replace </p>
+    <div class="aboutpage" th:insert="~{base :: parent}">
+      
+    </div>
+
+    <div  th:replace="~{base :: parent2(~{::.third_section})}">
+        <section id="first_section">
+            This is the example of passing the html 
+            code to the fragment by using id 
+       
+            <button>click</button>
+        </section>
+
+        <section id="second_section">
+            This is the example of passing the html 
+            code to the fragment by using id 
+            th:replace="~{base :: parent2(~{::#second_section})}"
+            <button>click</button>
+        </section>
+
+        <section class="third_section">
+            This is the example of passing the html 
+            code to the fragment by using class 
+            th:replace="~{base :: parent2(~{::.third_section})}"
+             <button>click</button>
+        </section>
+    </div>
+
+    <div th:replace="${login} ? ~{base :: parent2(~{::#fourth_section})} : ~{base :: parent2(~{::#fifth_section})}">
+        <section id="fourth_section">
+         <h1>this is call when login is true</h1>
+            This is the example of passing the html 
+            code to the fragment by using id 
+            
+            th:replace="${login} ? ~{base :: parent2(~{::#fourth_section})} : ~{base :: parent2(~{::#fifth_section})}"
+          
+        </section>
+
+        <section class="fifth_section">
+            This is the example of passing the html 
+            code to the fragment by using class 
+            th:replace="~{base :: parent2(~{::.third_section})}"
+             <button>click</button>
+        </section>
+    </div>
 </body>
 </html>

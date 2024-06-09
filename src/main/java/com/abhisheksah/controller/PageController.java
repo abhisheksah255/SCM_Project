@@ -3,10 +3,6 @@ package com.abhisheksah.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-
 
 
 @Controller
@@ -24,15 +20,17 @@ public class PageController {
     }
 
 @RequestMapping("/about")
-public String aboutPage(){
+public String aboutPage(Model model) {
+    model.addAttribute("login", true);
 System.out.println("This is the about page API");
     return "about";
 }
 
 @RequestMapping("/service")
-public String servicePage(){
+public String servicePage(Model model) {
+    model.addAttribute("login", false);
 System.out.println("This is the service page API");
-    return "about";
+    return "service";
 }
 
 }

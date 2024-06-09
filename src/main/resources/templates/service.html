@@ -7,5 +7,44 @@
 </head>
 <body>
     <h1>This is Service Page</h1>
+
+      
+    <div class="servicepage" th:replace="~{base :: parent1('one','two')}">
+    </div>
+
+    <div class="servicepage" th:replace="~{base :: parent2(~{::section})}">
+        <section>
+            This is the example of passing the html code to the fragment
+            th:replace="~{base :: parent2(~{::section})}"
+
+            ----this is how we can pass parent fragent----- 
+          div --  th:fragment="parent2(content)"
+        -- div--   th:replace="${content}"
+
+    ----------after that we can call like this -------------
+    th:replace="~{base :: parent2(~{::section})}"
+            <button>click</button>
+        </section>
+    </div>
+
+    <div th:replace="${login} ? ~{base :: parent2(~{::#fourth_section})} : ~{base :: parent2(~{::#fifth_section})}">
+        <section id="fourth_section">
+         <h1>this is call when login is true</h1>
+            This is the example of passing the html 
+            code to the fragment by using id 
+            
+            th:replace="${login} ? ~{base :: parent2(~{::#fourth_section})} : ~{base :: parent2(~{::#fifth_section})}"
+          
+        </section>
+
+        <section id="fifth_section">
+            <h1>this is call when login is false</h1>
+            This is the example of passing the html 
+            code to the fragment by using class 
+            th:replace="${login} ? ~{base :: parent2(~{::#fourth_section})} : ~{base :: parent2(~{::#fifth_section})}"
+          
+        </section>
+    </div>
+
 </body>
 </html>
